@@ -1,0 +1,93 @@
+<h2 class="content-block">Tour of Heroes</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <div class="search">
+      <div class="field">
+        <dx-text-box
+          placeholder="Enter name"
+          valueChangeEvent="keyup"
+          [maxLength]="40"
+        ></dx-text-box>
+      </div>
+
+      <!-- <div class="field">
+          <dx-select-box
+            [dataSoure]="transformations"
+            [grouped]="true"
+            displayExpr="name"
+            valueExpr="value"
+          ></dx-select-box>
+        </div> -->
+
+      <div class="field">
+        <dx-select-box
+          [(value)]="transform"
+          [items]="transformations"
+          [grouped]="true"
+          displayExpr="name"
+          valueExpr="value"
+        ></dx-select-box>
+      </div>
+
+      <div class="field">
+        <dx-select-box
+          [(value)]="transform"
+          [items]="transformations"
+          [grouped]="true"
+          displayExpr="name"
+          valueExpr="value"
+        ></dx-select-box>
+      </div>
+
+      <div class="search-btn">
+        <dx-button
+          stylingMode="contained"
+          text="search"
+          type="default"
+          [width]="120"
+          (click)="search()"
+        >
+        </dx-button>
+      </div>
+    </div>
+
+    <div class="content">
+      <dx-button
+        stylingMode="contained"
+        text="new hero"
+        type="default"
+        [width]="120"
+        (click)="createHero()"
+      >
+      </dx-button>
+
+      <dx-tree-list
+        [dataSource]="HEROES"
+        keyExpr="id"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+      >
+        <dxo-editing
+          mode="row"
+          [allowUpdating]="true"
+          [allowDeleting]="true"
+          [allowAdding]="true"
+        >
+        </dxo-editing>
+
+        <dxi-column dataField="id" caption="id"> </dxi-column>
+
+        <dxi-column dataField="name" caption="name"> </dxi-column>
+
+        <dxi-column type="buttons">
+          <dxi-button name="edit"></dxi-button>
+          <dxi-button name="delete"></dxi-button>
+        </dxi-column>
+      </dx-tree-list>
+
+      <ng-template #missing>
+        <strong>not found</strong>
+      </ng-template>
+    </div>
+  </div>
+</div>
