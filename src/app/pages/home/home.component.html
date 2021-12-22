@@ -39,7 +39,7 @@
         ></dx-select-box>
       </div>
 
-      <div class="search-btn">
+      <div class="search-btn"> 
         <dx-button
           stylingMode="contained"
           text="search"
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="content">
+    <div class="content" *ngIf="HEROES.length">
       <dx-button
         stylingMode="contained"
         text="new hero"

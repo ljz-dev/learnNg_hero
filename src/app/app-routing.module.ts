@@ -18,6 +18,7 @@ import {
   DxTreeListModule,
   DxFormModule
 } from 'devextreme-angular';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -69,7 +70,8 @@ const routes: Routes = [
     DxSelectBoxModule,
     DxButtonModule,
     DxTreeListModule,
-    DxFormModule
+    DxFormModule,
+    CommonModule
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],
