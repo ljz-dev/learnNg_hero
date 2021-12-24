@@ -1,6 +1,7 @@
 <h2 class="content-block">Tour of Heroes</h2>
 <div class="content-block">
   <div class="dx-card responsive-paddings">
+    <!-- <app-page-search></app-page-search> -->
     <div class="search">
       <div class="field">
         <dx-text-box
@@ -10,36 +11,23 @@
         ></dx-text-box>
       </div>
 
-      <!-- <div class="field">
-          <dx-select-box
-            [dataSoure]="transformations"
-            [grouped]="true"
-            displayExpr="name"
-            valueExpr="value"
-          ></dx-select-box>
-        </div> -->
-
       <div class="field">
         <dx-select-box
-          [(value)]="transform"
-          [items]="transformations"
-          [grouped]="true"
-          displayExpr="name"
-          valueExpr="value"
+          [dataSource]="heroes"
+          displayExpr="id"
+          valueExpr="id"
         ></dx-select-box>
       </div>
 
       <div class="field">
         <dx-select-box
-          [(value)]="transform"
-          [items]="transformations"
-          [grouped]="true"
+          [dataSource]="heroes"
           displayExpr="name"
-          valueExpr="value"
+          valueExpr="name"
         ></dx-select-box>
       </div>
 
-      <div class="search-btn"> 
+      <div class="search-btn">
         <dx-button
           stylingMode="contained"
           text="search"
@@ -50,25 +38,27 @@
         </dx-button>
       </div>
     </div>
-
-    <div class="content" *ngIf="HEROES.length">
-      <dx-button
-        stylingMode="contained"
-        text="new hero"
-        type="default"
-        [width]="120"
-        (click)="createHero()"
-      >
-      </dx-button>
+    <div class="content" *ngIf="heroes.length; else missing">
+      <div class="add-btn">
+        <dx-button
+          stylingMode="contained"
+          text="add a hero"
+          type="default"
+          [width]="120"
+          (click)="add()"
+        >
+        </dx-button>
+      </div>
 
       <dx-tree-list
-        [dataSource]="HEROES"
+        [dataSource]="heroes"
         keyExpr="id"
         [allowColumnResizing]="true"
         [columnAutoWidth]="true"
+        [autoExpandAll]="true"
       >
         <dxo-editing
-          mode="row"
+          mode="cell"
           [allowUpdating]="true"
           [allowDeleting]="true"
           [allowAdding]="true"
@@ -84,10 +74,10 @@
           <dxi-button name="delete"></dxi-button>
         </dxi-column>
       </dx-tree-list>
-
-      <ng-template #missing>
-        <strong>not found</strong>
-      </ng-template>
     </div>
+
+    <ng-template #missing>
+      <strong>not found</strong>
+    </ng-template>
   </div>
 </div>

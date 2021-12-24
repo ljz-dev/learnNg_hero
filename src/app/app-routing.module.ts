@@ -8,29 +8,17 @@ import {
 } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
 import {
   DxDataGridModule,
   DxTextBoxModule,
   DxSelectBoxModule,
   DxButtonModule,
   DxTreeListModule,
-  DxFormModule
+  DxFormModule,
 } from 'devextreme-angular';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  {
-    path: 'tasks',
-    component: TasksComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuardService],
-  },
   {
     path: 'home',
     component: HomeComponent,
@@ -71,10 +59,10 @@ const routes: Routes = [
     DxButtonModule,
     DxTreeListModule,
     DxFormModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, TasksComponent],
+  declarations: [HomeComponent],
 })
 export class AppRoutingModule {}
